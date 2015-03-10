@@ -55,16 +55,16 @@ body {
     animation-delay: .3s;
 }
 .delay-2{
+    -webkit-animation-delay: .6s;
+    animation-delay: .6s;
+}
+.delay-3{
     -webkit-animation-delay: .9s;
     animation-delay: .9s;
 }
-.delay-3{
+.delay-4{
     -webkit-animation-delay: 1.2s;
     animation-delay: 1.2s;
-}
-.delay-4{
-    -webkit-animation-delay: 1.5s;
-    animation-delay: 1.5s;
 }
 .fix-top{
     position: absolute;

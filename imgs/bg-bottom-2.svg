@@ -97,7 +97,7 @@
 }
 	.st0{fill:#009245;}
 </style>
-<g id="bg-bottom-2.svg" class="animated shake-large infinite">
+<g id="bg-bottom-2.svg" class="animated shake infinite">
 	<rect x="0" y="0" class="st0" width="154.5" height="220.5"/>
 	<rect x="261" y="49.5" class="st0" width="55.5" height="109.5"/>
 	<rect x="411" y="69" class="st0" width="70.5" height="151.5"/>
