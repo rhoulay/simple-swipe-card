@@ -39,16 +39,14 @@ $(document).ready(function () {
         $('#loading').addClass("animated bounceOut").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             $("#loading").removeClass("animated bounceOut");
             hideOpacity($("#loading"));
-            $("#logo").css('opacity', '1');
-            $("#wave").css('opacity', '1');
+            $(".outside-content").css('opacity', '1');
             $("#main-content").css('opacity', '1');
             initSwiper();
         });
     }
 
     hideSlide();
-    $("#logo").css('opacity', '0');
-    $("#wave").css('opacity', '0');
+    $(".outside-content").css('opacity', '0');
     $('#main-content').css('opacity', '0');
 
     var currentIndex = 0;
