@@ -1,13 +1,14 @@
 // Initialize Swiper
 $(document).ready(function () {
 
-
     var isOK = false;
     var preload;
+    var currentIndex = 0;
+    var mySwiper;
 
     function init() {
         // Create a new queue.
-        preload = new createjs.LoadQueue(false, "imgs/");
+        preload = new createjs.LoadQueue(true, "imgs/");
 
         var plugin = {
             getPreloadHandlers: function () {
@@ -22,7 +23,7 @@ $(document).ready(function () {
         };
 
         preload.installPlugin(plugin);
-        preload.loadManifest(["logo.svg"
+        preload.loadManifest(["logo.svg","logo.svg"
 
         ]);
         preload.on("complete", handleComplete);
@@ -31,32 +32,78 @@ $(document).ready(function () {
 
     function handleComplete(event) {
         overLoading();
-    }
-    init();
 
+    }
 
     function overLoading(){
+        $('#main-content').show();
+        $("#logo").show();
+        $("#wave").show();
         $('#loading').addClass("animated bounceOut").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             $("#loading").removeClass("animated bounceOut");
             hideOpacity($("#loading"));
+            $('#main-content').css('opacity', '1');
             $("#logo").css('opacity', '1');
             $("#wave").css('opacity', '1');
-            $("#main-content").css('opacity', '1');
             initSwiper();
+            initModal();
+            showHideBlock();
         });
     }
 
+
     hideSlide();
+    $('#main-content').css('opacity', '0');
     $("#logo").css('opacity', '0');
     $("#wave").css('opacity', '0');
-    $('#main-content').css('opacity', '0');
 
-    var currentIndex = 0;
+    init();
+
+    function showHideBlock(){
+
+        $('.show-hide .show').on('click', function(e){
+            $('.show-hide .show').show();
+            $('.show-hide .hide').hide();
+            $(this).hide();
+            $(this).next().show();
+        });
+    }
+
+    function initModal(){
+        $('.modal-button').on('click', function(e){
+            $.get($(this).attr('modal-content'), function(response){
+                $('#modal-content .modal-inner').html(response);
+                $('#modal-content').show();
+                $('#modal-content .modal-container').addClass('animated bounceIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $('#modal-content .modal-container').removeClass('animated bounceIn');
+
+                    $('#modal-close-button').show();
+                    $('#modal-close-button').addClass('animated fadeIn').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                        $('#modal-close-button').removeClass('animated fadeIn');
+                    });
+                });
+                var swiperV = new Swiper('#modal-content .modal-container', {
+                });
+            });
+        });
+
+        $('#modal-close-button').on('click', function(e){
+            $('#modal-close-button').hide();
+            $('#modal-content .modal-container').addClass('animated bounceOut').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                $('#modal-content .modal-container').removeClass('animated bounceOut');
+                $('#modal-content').hide();
+                $('#modal-content .modal-inner').html('');
+            });
+        });
+    }
+
     function initSwiper(){
+
         //initialize swiper when document ready
-        var mySwiper = new Swiper ('.swiper-container', {
+        mySwiper = new Swiper ('#main-content', {
             // Optional parameters
             direction: 'vertical',
+            parallax: true,
             onInit: function(swiper){
                 hideSlide();
                 showOnebyOne();
@@ -103,4 +150,6 @@ $(document).ready(function () {
 
         });
     }
+
+    console.log('js');
 });
