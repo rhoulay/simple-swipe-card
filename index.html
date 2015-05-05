@@ -20,35 +20,35 @@
     <img src="imgs/loading.svg" >
     <div><span loading-percent>12</span>%</div>
 </div>
-<img src="imgs/logo.svg" class="outside-content full-width fix-top z-index-10"/>
 <!-- Swiper -->
-<div class="swiper-container" id="main-content">
+<div class="swiper-container swiper-container-h" id="main-content">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <img src="imgs/bg-top.svg" class="full-width fix-top"/>
-            <img src="imgs/placeholder.svg" class="full-width delay-0" animated-css="shake"/>
-            <img src="imgs/placeholder.svg" class="full-width delay-1" animated-css="fadeInDown"/>
-            <img src="imgs/placeholder.svg" class="full-width delay-2" animated-css="zoomIn"/>
-            <img src="imgs/bg-bottom.svg" class="full-width fix-bottom"/>
+            <div class="swiper-page-container swiper-container" id="cover">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide swiper-no-swiping" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/1)">
+                        <img src="imgs/placeholder.svg" class="full-width">
+                    </div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/2)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/3)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/4)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/5)"></div>
+                </div>
+            </div>
         </div>
         <div class="swiper-slide">
-            <img src="imgs/placeholder.svg" class="full-width" animated-css="tada"/>
-            <img src="imgs/bg-bottom.svg" class="full-width fix-bottom"/>
-        </div>
-        <div class="swiper-slide">
-            <img src="imgs/placeholder.svg" class="full-width delay-1" animated-css="fadeInDown"/>
-            <img src="imgs/placeholder.svg" class="full-width delay-2" animated-css="zoomIn"/>
-            <img src="imgs/bg-bottom.svg" class="full-width fix-bottom"/>
-        </div>
-        <div class="swiper-slide">
-            <img src="imgs/placeholder.svg" class="full-width" animated-css="fadeIn"/>
-        </div>
-        <div class="swiper-slide">
-            <img src="imgs/placeholder.svg" class="full-width" animated-css="fadeIn"/>
+            <div class="swiper-page-container swiper-container" id="navigation">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/1)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/2)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/3)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/4)"></div>
+                    <div class="swiper-slide" style="background-image:url(http://lorempixel.com/1000/1000/nightlife/5)"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<img src="imgs/bg-bottom-2.svg" class="outside-content full-width fix-bottom"/>
 
 <!-- Swiper JS -->
 <script src="libs/zepto.min.js"></script>

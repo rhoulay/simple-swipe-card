@@ -52,9 +52,16 @@ $(document).ready(function () {
     var currentIndex = 0;
     function initSwiper(){
         //initialize swiper when document ready
-        var mySwiper = new Swiper ('.swiper-container', {
+        var mySwiper = new Swiper ('.swiper-page-container', {
             // Optional parameters
             direction: 'vertical',
+            effect:'fade',
+            noSwiping:true,
+            noSwipingClass:"swiper-no-swiping",
+            fade: {
+                crossFade: true
+            },
+            autoplay:1000,
             onInit: function(swiper){
                 hideSlide();
                 showOnebyOne();
@@ -69,6 +76,19 @@ $(document).ready(function () {
                 if(currentIndex != swiper.activeIndex){
                     hideSlide();
                 }
+            }
+        });
+
+        var mySwiperH = new Swiper ('.swiper-container-h', {
+            // Optional parameters
+            onInit: function(swiper){
+
+            },
+            onTransitionEnd: function(swiper){
+
+            },
+            onTransitionStart: function(swiper){
+
             }
         });
     }
