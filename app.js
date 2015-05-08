@@ -12,7 +12,7 @@ $(document).ready(function () {
         var plugin = {
             getPreloadHandlers: function () {
                 return {
-                    extensions: ["svg","mp3","png"],
+                    extensions: ["svg","mp3","png","jpg"],
                     callback: function (item) {
                         var id = item.src.toLowerCase().split("/").pop().split(".")[0];
                         $("#"+id).attr("src", item.src);
@@ -22,7 +22,7 @@ $(document).ready(function () {
         };
 
         preload.installPlugin(plugin);
-        preload.loadManifest(["logo.svg"
+        preload.loadManifest(["Oval-100.jpg"
 
         ]);
         preload.on("complete", handleComplete);
@@ -55,27 +55,25 @@ $(document).ready(function () {
         var mySwiper = new Swiper ('.swiper-page-container', {
             // Optional parameters
             direction: 'vertical',
-            effect:'fade',
+//            effect:'fade',
             noSwiping:true,
             noSwipingClass:"swiper-no-swiping",
             fade: {
-                crossFade: true
+                crossFade: false
             },
-            autoplay:1000,
+            slideActiveClass:"swiper-page-slide-active",
+//            autoplay:1000,
             onInit: function(swiper){
-                hideSlide();
-                showOnebyOne();
+                showOnebyOne("swiper-page-slide-active");
             },
             onTransitionEnd: function(swiper){
-                if(currentIndex != swiper.activeIndex){
-                    showOnebyOne();
-                }
-                currentIndex = swiper.activeIndex;
+                showOnebyOne("swiper-page-slide-active");
+
             },
             onTransitionStart: function(swiper){
-                if(currentIndex != swiper.activeIndex){
-                    hideSlide();
-                }
+                hideSlide("swiper-slide-prev");
+                hideSlide("swiper-slide-next");
+
             }
         });
 
@@ -102,17 +100,38 @@ $(document).ready(function () {
     }
 
 
-    function hideSlide(){
-        $('.swiper-slide').children().each(function(element){
+    function hideSlide(classString){
+        $('.' + classString).children().each(function(element){
             if($(this).attr('animated-css')){
                 hideOpacity($(this));
                 $(this).removeClass('animated ' + $(this).attr('animated-css'));
             }
         });
-    }
-    function showOnebyOne(){
-        $('.swiper-slide-active').children().each(function(element){
+
+        $('.' + classString + ' .animated-box').children().each(function(element){
             if($(this).attr('animated-css')){
+                hideOpacity($(this));
+//                console.log($(this));
+                $(this).removeClass('animated ' + $(this).attr('animated-css'));
+            }
+        });
+    }
+
+    function showOnebyOne(classString){
+        $('.' + classString).children().each(function(element){
+            if($(this).attr('animated-css')){
+                showOpacity($(this));
+                $(this).addClass('animated ' + $(this).attr('animated-css')).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+                    $(this).removeClass('animated ' + $(this).attr('animated-css'));
+                });
+            }
+
+        });
+
+        $('.' + classString + ' .animated-box').children().each(function(element){
+
+            if($(this).attr('animated-css')){
+//                console.log($(this));
                 showOpacity($(this));
                 $(this).addClass('animated ' + $(this).attr('animated-css')).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
                     $(this).removeClass('animated ' + $(this).attr('animated-css'));
